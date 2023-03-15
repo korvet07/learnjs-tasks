@@ -1,0 +1,12 @@
+function makeUser() {
+  return {
+    name: "John",
+    ref: this
+  };
+}
+
+let user = makeUser();
+
+alert( user.ref.name ); // Каким будет результат?- Error: Cannot read property 'name' of undefined
+
+Ошибка, тк this у функций(не стрелок) вычисляется в момент вызова, и в данном примере будет глобальным объектом window, у которого нет свойства .name. Чтобы этого  избежать можно сделать функцию makeUser() методом объекта и вызвать как метод(this будет слева от точки) либо привязать контекст this через вызов .call(), .apply()

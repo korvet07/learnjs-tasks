@@ -1,0 +1,3 @@
+let bluePlanet;
+let currentUser;
+

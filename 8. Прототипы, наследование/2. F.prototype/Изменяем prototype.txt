@@ -1,0 +1,51 @@
+Добавим одну строчку (выделенную в коде ниже). Что вызов alert покажет нам сейчас?
+
+function Rabbit() {}
+Rabbit.prototype = {
+  eats: true
+};
+
+let rabbit = new Rabbit();
+
+Rabbit.prototype = {};
+
+alert( rabbit.eats ); // true, тк содержимое Rabbit.prototype уже не имеет значения для прототипа rabbit
+
+…А если код такой (заменили одну строчку)?
+
+function Rabbit() {}
+Rabbit.prototype = {
+  eats: true
+};
+
+let rabbit = new Rabbit();
+
+Rabbit.prototype.eats = false;
+
+alert( rabbit.eats ); // false, тк изменилось значение свойства eats в прототипе  rabbit.
+
+Или такой (заменили одну строчку)?
+
+function Rabbit() {}
+Rabbit.prototype = {
+  eats: true
+};
+
+let rabbit = new Rabbit();
+
+delete rabbit.eats;
+
+alert( rabbit.eats ); // true, тк у rabbit нет свойста eats,  rabbit.eats считывается из прототипа rabbit
+
+Или, наконец, такой:
+
+function Rabbit() {}
+Rabbit.prototype = {
+  eats: true
+};
+
+let rabbit = new Rabbit();
+
+delete Rabbit.prototype.eats;
+
+alert( rabbit.eats ); // undefined, тк и в прототипе теперь нет свойства eats.

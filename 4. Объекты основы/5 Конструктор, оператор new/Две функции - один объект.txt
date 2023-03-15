@@ -1,0 +1,8 @@
+Возможно, например когда функции-конструкторы возвращают один и тот же, определённый "снаружи" объект.
+
+let obj = {};
+
+function A() { return obj; }
+function B() { return obj; }
+
+alert( new A() == new B() ); // true
